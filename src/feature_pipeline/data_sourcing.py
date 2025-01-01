@@ -12,9 +12,9 @@ def get_raw_data(url: str = config.data_url):
     response = requests.get(url)
     if response.status_code == 200:
         logger.success("Data found -> Downloading it now.")
-
+        
         try:
-            with open(RAW_DATA_DIR/"commodities_received_2024.xlsx", mode="wb") as file:
+            with open(config.raw_data_file_path, mode="wb") as file:
                 _ = file.write(response.content)
             logger.success("Downloaded!")
                     
